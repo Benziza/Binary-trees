@@ -1,87 +1,88 @@
-import java.util.LinkedList;
-import java.util.Queue;
+/* 1-A class that includes the left and right child nodes of this node as well as the value of the key */
+class Node
+{
+    int key;
+    Node left, right;
 
+    public Node(int item)
+    {
+        key = item;
+        left = right = null;
+    }
+}
 public class BinaryTree {
-    // 1-A node in a binary tree has a key, a pointer to the left child node, and a pointer to the right child node
-    static class Node {
-        int key;
-        Node left, right;
 
-        Node(int key){
-            this.key = key;
-            left = null;
-            right = null;
-        }
+    // 2-root
+    Node root;
+
+    BinaryTree()
+    {
+        root = null;
     }
 
-    static Node root;
-    static Node temp = root;
-
-    // 2-Navigate through the levels of the binary tree
-
-    static void inorder(Node temp)
+    // 3-Postorder
+    void printPostorder(Node node)
     {
-        if (temp == null)
+        if (node == null)
             return;
 
-        inorder(temp.left);
-        System.out.print(temp.key+" ");
-        inorder(temp.right);
+        // first recur on left subtree
+        printPostorder(node.left);
+
+        // then recur on right subtree
+        printPostorder(node.right);
+
+        // now deal with the node
+        System.out.print(node.key + " ");
     }
 
-    // 3-A function to insert an element into the binary tree
-    static void insert(Node temp, int key)
+    // 4-Inorder
+    void printInorder(Node node)
     {
-        Queue<Node> q = new LinkedList<Node>();
-        q.add(temp);
+        if (node == null)
+            return;
 
-        // 4-Navigate through the levels of the binary tree in search of an empty space
-        while (!q.isEmpty()) {
-            temp = q.peek();//5-get head element (the first element added)
-            q.remove();//6-remove the first element added
+        printInorder(node.left);
 
-            if (temp.left == null) {
-                temp.left = new Node(key);
-                break;
-            } else
-                q.add(temp.left);
+        System.out.print(node.key + " ");
 
-            if (temp.right == null) {
-                temp.right = new Node(key);
-                break;
-            } else
-                q.add(temp.right);
-        }
+        printInorder(node.right);
     }
+
+    // 5-Preorder
+    void printPreorder(Node node)
+    {
+        if (node == null)
+            return;
+
+        System.out.print(node.key + " ");
+
+        printPreorder(node.left);
+
+        printPreorder(node.right);
+    }
+
+    // 6-simplification
+    void printPostorder() {	 printPostorder(root); }
+    void printInorder() {	 printInorder(root); }
+    void printPreorder() {	 printPreorder(root); }
+
     // 7-test the previous functions
     public static void main(String[] args) {
-        root = new Node(10);
-        root.left = new Node(11);
-        root.left.left = new Node(7);
-        root.right = new Node(9);
-        root.right.left = new Node(15);
-        root.right.right = new Node(8);
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(5);
 
-        System.out.print( "Inorder traversal before insertion:");
-        inorder(root);
+        System.out.println("Preorder traversal of binary tree is ");
+        tree.printPreorder();
 
-        /*
-			 10
-			/   \
-		   11    9
-		  / \   / \
-		 7 null 15 8  */
+        System.out.println("\nInorder traversal of binary tree is ");
+        tree.printInorder();
 
-        int key = 12;
-        insert(root, key);
-
-        /*
-			 10
-			/   \
-		   11    9
-		  / \   / \
-		 7  12 15  8  */
-        System.out.print("\nInorder traversal after insertion:");
-        inorder(root);
+        System.out.println("\nPostorder traversal of binary tree is ");
+        tree.printPostorder();
     }
 }
