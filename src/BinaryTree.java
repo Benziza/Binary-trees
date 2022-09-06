@@ -1,88 +1,78 @@
-/* 1-A class that includes the left and right child nodes of this node as well as the value of the key */
+/* 1-A class containing the left and right child of the current node and a key value */
 class Node
 {
-    int key;
+    int data;
     Node left, right;
-
     public Node(int item)
     {
-        key = item;
+        data = item;
         left = right = null;
     }
 }
 public class BinaryTree {
 
-    // 2-root
+    // 2-root of the binary tree
     Node root;
 
-    BinaryTree()
+    public BinaryTree()
     {
         root = null;
     }
 
-    // 3-Postorder
-    void printPostorder(Node node)
+    /* 3-Function to print the result of navigating through tree levels */
+    void printLevelOrder()
     {
-        if (node == null)
-            return;
-
-        // first recur on left subtree
-        printPostorder(node.left);
-
-        // then recur on right subtree
-        printPostorder(node.right);
-
-        // now deal with the node
-        System.out.print(node.key + " ");
+        int h = height(root);
+        int i;
+        for (i=1; i<=h; i++)
+            printGivenLevel(root, i);
     }
 
-    // 4-Inorder
-    void printInorder(Node node)
+    /* 4-The function calculates the height of the tree
+    The height of the tree is the longest path from the root node down to the farthest leaf node
+     */
+    int height(Node root)
     {
-        if (node == null)
-            return;
+        if (root == null)
+            return 0;
+        else
+        {
+            /* 5-Calculate the height of each subtree */
+            int lheight = height(root.left);
+            int rheight = height(root.right);
 
-        printInorder(node.left);
-
-        System.out.print(node.key + " ");
-
-        printInorder(node.right);
+            /* 6-Use the highest height */
+            if (lheight > rheight)
+                return(lheight+1);
+            else return(rheight+1);
+        }
     }
 
-    // 5-Preorder
-    void printPreorder(Node node)
+    /* 7-Print nodes at a specific level */
+    void printGivenLevel (Node root ,int level)
     {
-        if (node == null)
+        if (root == null)
             return;
-
-        System.out.print(node.key + " ");
-
-        printPreorder(node.left);
-
-        printPreorder(node.right);
+        if (level == 1)
+            System.out.print(root.data + " ");
+        else if (level > 1)
+        {
+            printGivenLevel(root.left, level-1);
+            printGivenLevel(root.right, level-1);
+        }
     }
-
-    // 6-simplification
-    void printPostorder() {	 printPostorder(root); }
-    void printInorder() {	 printInorder(root); }
-    void printPreorder() {	 printPreorder(root); }
-
-    // 7-test the previous functions
-    public static void main(String[] args) {
+    /* 8-Test the previous functions */
+    public static void main(String args[])
+    {
         BinaryTree tree = new BinaryTree();
-        tree.root = new Node(1);
-        tree.root.left = new Node(2);
-        tree.root.right = new Node(3);
-        tree.root.left.left = new Node(4);
-        tree.root.left.right = new Node(5);
+        tree.root= new Node(1);
+        tree.root.left= new Node(2);
+        tree.root.right= new Node(3);
+        tree.root.left.left= new Node(4);
+        tree.root.left.right= new Node(5);
 
-        System.out.println("Preorder traversal of binary tree is ");
-        tree.printPreorder();
-
-        System.out.println("\nInorder traversal of binary tree is ");
-        tree.printInorder();
-
-        System.out.println("\nPostorder traversal of binary tree is ");
-        tree.printPostorder();
+        System.out.println("Level order traversal of binary tree is ");
+        tree.printLevelOrder();
     }
+
 }
