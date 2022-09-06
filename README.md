@@ -337,6 +337,16 @@ Linear data structures (arrays, linked lists, queues, stacks) can be traversed i
 
 <strong>Depth First Traversal,It includes three modes:</strong><br>
 1-Inorder (left, root, right)<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Inorder-traversal.gif" /><br>
+
 2-Preorder (root, left, right)<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Preorder-traversal.gif" /><br>
+
 3-Postorder (left, right, root)<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Postorder-traversal.gif" /><br>
+
 <strong>Breadth First Traversal:</strong> Also called Level Order Traversal, it starts with the root and then moves to neighboring nodes and starts the search process at the same level before moving to the next level.
+
+<img src="https://miro.medium.com/max/1400/0*MGSfuNeweU_YKiFH.gif" /><br>
+
+### 3-6-1-Depth First Traversal : The time complexity of the three operations is O(n).
