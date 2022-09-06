@@ -45,3 +45,108 @@ class Node
     }
 }
 ```
+
+### Create a simple binary data tree
+
+```
+      tree
+      ----
+       1    <-- root
+     /   \
+    2     3
+   /
+  4
+```
+
+Java :
+
+```
+// 1-Node
+class Node
+{
+    int key;
+    Node left, right;
+
+    public Node(int item)
+    {
+        key = item;
+        left = right = null;
+    }
+}
+public class BinaryTree {
+
+    // 2-Binary tree root
+    Node root;
+
+    // 3-Constructors
+    BinaryTree(int key)
+    {
+        root = new Node(key);
+    }
+
+    BinaryTree()
+    {
+        root = null;
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+
+        /* 4-Create root*/
+        tree.root = new Node(1);
+        /* After executing the previous statement, the tree will look like this:
+			 1
+			/ \
+		null   null
+		*/
+
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+		/* 5-Node 2 and 3 become the left and right sons of Node 1
+			 1
+			/ \
+		   2   3
+		  / \ / \
+		null null null null */
+
+        tree.root.left.left = new Node(4);
+        /* 6-Node 4 becomes the left son of Node 2
+			 1
+			/ \
+		   2   3
+		  / \ / \
+		4  null null null */
+
+    }
+}
+
+```
+
+### 3-3-Properties of binary data trees
+
+1- The maximum number of nodes at any level 'l' in the binary data tree is 2^(l-1)
+
+Remark : the root is at level 1.
+
+This rule can be proven in the following way:
+l = 1 in the root, so the number of nodes is 2^(1-1) = 1
+
+Remark : If we assume that the maximum number of nodes at level l is
+2^(l-1), and since each node in the binary data tree has only two child nodes, then the next level of this node will have twice the number of nodes, ie 2\*2^(l-1).
+
+2- The maximum number of nodes in a binary data tree with height 'h' is
+2^(h-1)
+
+The height of the tree is the maximum number of nodes from the root to the leaf, and the height of a tree that has one node is 1.
+
+Remark : Some books indicate that the root height is 0, so the previous formula would look like this: 2h+1-1.
+
+3- The lowest possible height or the lowest number of levels in a binary data tree with N nodes is Log2(N+1)
+
+Remark : If we consider the assumption that the leaf node has the height 0, then the previous formula will become: Log2(N+1) - 1.
+
+4- A binary data tree containing L of leaves has at least Log2(L) + 1 levels
+
+5- In a binary data tree in which each node has either 0 or 2 child nodes, the number of leaf nodes is always 1 greater than the number of nodes that have two child nodes.
+
+### 3-4-Types of binary data trees
