@@ -21,3 +21,27 @@ There are other applications of data trees, including:<br>
 ### 3-1-Definition
 
 A tree in which each element has at most two sons is called a Binary Tree, and since each element has only two sons, it can be called the right son and the left son.
+
+### 3-2-Binary data tree representation
+
+The binary data tree is represented by a pointer to the top node in the data tree. If the tree is empty, the root value is NULL.
+
+The node includes the following parts:<br>
+-data.<br>
+-Pointer to the left node.<br>
+-Pointer to the right node.<br>
+<strong>Representation in java :</strong>
+
+```
+class Node
+{
+    int key;
+    Node left, right;
+
+    public Node(int item)
+    {
+        key = item;
+        left = right = null;
+    }
+}
+```
