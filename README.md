@@ -529,3 +529,76 @@ public class BinaryTree {
 
 }
 ```
+
+The time complexity of this method is in the worst case O(n^2). In skewed data trees, the function takes O(n) of time and n is the number of nodes in the skewed data tree; So the time complexity of printLevelOrder() becomes O(n) + O(n-1) + O(n-2) + .. + O(1) which is O(n^2).
+
+<strong>Method 2: Use queues</strong><br>
+Each node in the binary data tree is visited, and the child nodes of each node are added in a FIFO (first in, first out) queue, according to the following steps:
+
+1-We create an empty queue.<br>
+2-We start from the root temp_node = root.<br>
+3-We use an iterative loop that performs the following operations as long as temp_node has any value other than NULL:<br>
+3-1-We print the temporary node data temp_node->data.<br>
+3-2-We include the children of the temporary node (left son, then right son) in the queue.<br>
+3-3-We remove a node from the queue and assign its value to the variable temp_node.
+
+```
+import java.util.LinkedList;
+import java.util.Queue;
+
+/* 1-A class containing the left and right child of the current node and a key value */
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = null;
+        right = null;
+    }
+}
+public class BinaryTree {
+
+    Node root;
+
+    // 2-The function prints the nodes in the given binary tree
+    // by level using an array to create the queue
+    void printLevelOrder()
+    {
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        while (!queue.isEmpty())
+        {
+
+            // 3-This function deletes the current header
+            Node tempNode = queue.poll();
+            System.out.print(tempNode.data + " ");
+
+            // insert left son
+            if (tempNode.left != null) {
+                queue.add(tempNode.left);
+            }
+
+            // insert right son
+            if (tempNode.right != null) {
+                queue.add(tempNode.right);
+            }
+        }
+    }
+
+    public static void main(String args[])
+    {
+        BinaryTree tree_level = new BinaryTree();
+        tree_level.root = new Node(1);
+        tree_level.root.left = new Node(2);
+        tree_level.root.right = new Node(3);
+        tree_level.root.left.left = new Node(4);
+        tree_level.root.left.right = new Node(5);
+
+        System.out.println("Level order traversal of binary tree is - ");
+        tree_level.printLevelOrder();
+    }
+
+}
+
+```
