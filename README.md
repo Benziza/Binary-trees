@@ -236,7 +236,7 @@ Balanced binary data trees are a good performance choice for lookups, inserts, a
       40
 ```
 
-### Inserting elements into binary data trees
+### 3-5-Inserting elements into binary data trees
 
 Elements can be inserted into binary data trees by navigating the tree levels using a queue, if we find a node that has an empty left node we create a new key as a left node for this node, otherwise if we find a node that has an empty right node we create a new key as a right node for this node.
 
@@ -330,3 +330,13 @@ public class BinaryTree {
 }
 
 ```
+
+### 3-6-Navigate the binary data tree
+
+Linear data structures (arrays, linked lists, queues, stacks) can be traversed in one logical way, but data trees differ in this respect in that they can be navigated through their elements in different ways.<br>
+
+<strong>Depth First Traversal,It includes three modes:</strong><br>
+1-Inorder (left, root, right)<br>
+2-Preorder (root, left, right)<br>
+3-Postorder (left, right, root)<br>
+<strong>Breadth First Traversal:</strong> Also called Level Order Traversal, it starts with the root and then moves to neighboring nodes and starts the search process at the same level before moving to the next level.
