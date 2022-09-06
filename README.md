@@ -150,3 +150,90 @@ Remark : If we consider the assumption that the leaf node has the height 0, then
 5- In a binary data tree in which each node has either 0 or 2 child nodes, the number of leaf nodes is always 1 greater than the number of nodes that have two child nodes.
 
 ### 3-4-Types of binary data trees
+
+1-<strong>Full binary data tree : </strong> The binary data tree is full if each node has 0 or 2 child nodes. A full binary data tree can also be defined as a tree in which every node has two child nodes except for the leaf nodes.
+
+```
+Ex 1:
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+
+Ex 2:
+             18
+           /    \
+         15     20
+        /  \
+      40    50
+    /   \
+   30   50
+
+Ex 3:
+               18
+            /     \
+          40       30
+                   /  \
+                 100   40
+```
+
+The number of leaf nodes in a filled binary data tree is equal to the number of internal nodes plus one.<br>
+Ex 1: 1(18) + 1(15) + 1(30) + 1 ==> 4 leafs
+
+2-<strong>Complete Binary Data Tree :</strong> A binary data tree is considered complete if all levels in it are fully populated except for the last level, where most keys are to the left as far as possible.
+
+```
+Ex 1:
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+
+
+Ex 2:
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+     /  \   /
+    8   7  9
+```
+
+2-<strong>Perfect Binary data trees :</strong> A binary data tree is considered complete if all inner nodes have two child nodes and all leaf nodes are on the same level.
+
+```
+Ex 1:
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+
+Ex 2:
+               18
+           /       \
+         15         30
+```
+
+A Perfect binary tree of height h contains 2^(h)-1 nodes.<br>
+
+3-<strong>Balanced Binary Data Tree :</strong> also referred to as a height-balanced binary tree, is defined as a binary tree in which the height of the left and right subtree of any node differ by not more than 1.
+<img src="./Images/img2.png"/><br>
+Balanced binary data trees are a good performance choice for lookups, inserts, and deletes because their time complexity is O(Log n).<br>
+
+3-<strong>Degenerate Binary Data Tree :</strong> A binary data tree in which each internal node has one child node is called a degenerate (sick) binary graph. This type of binary data tree performs parallel to linked lists.
+
+```
+      10
+      /
+    20
+     \
+     30
+      \
+      40
+```
+
+###
