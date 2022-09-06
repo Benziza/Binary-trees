@@ -602,3 +602,5 @@ public class BinaryTree {
 }
 
 ```
+
+The time complexity of this method is O(n) and n is the number of nodes in the binary tree.
